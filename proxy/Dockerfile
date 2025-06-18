@@ -13,15 +13,16 @@ USER root
 
 RUN mkdir -p /vol/static && \
     mkdir -p /vol/media && \
-    chmod 755 /vol && \
+    chmod -R 755 /vol && \
     chown -R nginx:nginx /vol && \
     touch /etc/nginx/conf.d/default.conf && \
     chown nginx:nginx /etc/nginx/conf.d/default.conf && \
     chmod +x /run.sh
 
+USER nginx
+
 VOLUME /vol/static
 VOLUME /vol/media
 
-USER nginx
 
 CMD ["/run.sh"]

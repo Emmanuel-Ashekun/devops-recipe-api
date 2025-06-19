@@ -6,7 +6,7 @@ on:
 
 jobs:
   test-lint:
-    name: Test and Lint 
+    name: Test and Lint
     uses: ./.github/workflows/test-and-lint.yml
     secrets:
       DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}

@@ -12,7 +12,7 @@ on:
 
 jobs:
   python:
-    name: python
+    name: Python
     runs-on: ubuntu-22.04
     steps:
       - name: Login to Docker Hub
@@ -23,6 +23,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Test
-        run: docker compose run --rm app sc -c "python manage.py wait_for_db && python manage.py test"
+        run: docker compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
       - name: Python flake8
-        run: docker compose run --rm app sc -c "flake8"
+        run: docker compose run --rm app sh -c "flake8"

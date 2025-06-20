@@ -39,7 +39,7 @@ jobs:
           docker push ${{ vars.ECR_REPO_APP }}:$GITHUB_SHA
           docker build --compress -t ${{ vars.ECR_REPO_PROXY }}:$GITHUB_SHA proxy/ 
           docker push ${{ vars.ECR_REPO_PROXY }}:$GITHUB_SHA 
-          
+
       - name: Terraform Apply
         env:  
           AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
@@ -53,4 +53,4 @@ jobs:
           cd terraform/
           docker compose run --rm terraform -chdir=deploy/ init
           docker compose run --rm terraform -chdir=deploy/ workspace select -or-create $workspace
-          docker compose run --rm terraform -chdir=deploy/ apply auto-approve
+          docker compose run --rm terraform -chdir=deploy/ apply -auto-approve

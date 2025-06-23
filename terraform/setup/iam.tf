@@ -105,8 +105,45 @@ resource "aws_iam_user_policy_attachment" "ecr" {
 
 data "aws_iam_policy_document" "ec2" {
   statement {
-    actions = ["ec2:*"]
     effect = "Allow"
+    actions = [
+      "ec2:DescribeVpcs",
+      "ec2:CreateTags",
+      "ec2:CreateVpc",
+      "ec2:DeleteVpc",
+      "ec2:DescribeSecurityGroups",
+      "ec2:DeleteSubnet",
+      "ec2:DeleteSecurityGroup",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DetachInternetGateway",
+      "ec2:DescribeInternetGateways",
+      "ec2:DeleteInternetGateway",
+      "ec2:DetachNetworkInterface",
+      "ec2:DescribeVpcEndpoints",
+      "ec2:DescribeRouteTables",
+      "ec2:DeleteRouteTable",
+      "ec2:DeleteVpcEndpoints",
+      "ec2:DisassociateRouteTable",
+      "ec2:DeleteRoute",
+      "ec2:DescribePrefixLists",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeVpcAttribute",
+      "ec2:DescribeNetworkAcls",
+      "ec2:AssociateRouteTable",
+      "ec2:AuthorizeSecurityGroupIngress",
+      "ec2:RevokeSecurityGroupEgress",
+      "ec2:CreateSecurityGroup",
+      "ec2:AuthorizeSecurityGroupEgress",
+      "ec2:CreateVpcEndpoint",
+      "ec2:ModifySubnetAttribute",
+      "ec2:CreateSubnet",
+      "ec2:CreateRoute",
+      "ec2:CreateRouteTable",
+      "ec2:CreateInternetGateway",
+      "ec2:AttachInternetGateway",
+      "ec2:ModifyVpcAttribute",
+      "ec2:RevokeSecurityGroupIngress",
+    ]
     resources = ["*"]
   }
 }

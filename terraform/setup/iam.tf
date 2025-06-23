@@ -97,3 +97,27 @@ resource "aws_iam_user_policy_attachment" "ecr" {
   user       = aws_iam_user.cd.name
   policy_arn = aws_iam_policy.ecr.arn
 }
+
+
+#########################
+# Policy for EC2 access #
+#########################
+
+data "aws_iam_policy_document" "ec2" {
+  statement {
+    actions = ["ec2:*"]
+    effect = "Allow"
+    resources = ["*"]
+  }
+}
+
+resource "aws_iam_policy" "ec2" {
+  name        = "${aws_iam_user.cd.name}-ec2"
+  description = "Allow user to manage EC2 resources."
+  policy      = data.aws_iam_policy_document.ec2.json
+}
+
+resource "aws_iam_user_policy_attachment" "ec2" {
+  user       = aws_iam_user.cd.name
+  policy_arn = aws_iam_policy.ec2.arn
+}

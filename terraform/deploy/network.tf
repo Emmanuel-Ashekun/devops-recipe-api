@@ -96,3 +96,35 @@ resource "aws_route" "public_internet_access_b" {
   gateway_id             = aws_internet_gateway.main.id
 
 }
+
+
+
+
+##########################################################
+# Private Subnet for internal resources 
+##########################################################
+
+
+resource "aws_subnet" "private_a" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.1.10.0/24"
+  availability_zone = "${data.aws_region.current}a"
+
+  tags = {
+    Name = "${local.prefix}-private-a"
+  }
+
+
+}
+
+resource "aws_subnet" "private_b" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.1.11.0/24"
+  availability_zone = "${data.aws_region.current}b"
+
+  tags = {
+    Name = "${local.prefix}-private-b"
+  }
+
+
+}

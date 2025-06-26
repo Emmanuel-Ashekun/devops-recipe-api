@@ -132,7 +132,7 @@ dmypy.json
 .DS_Store
 
 # Local .terraform directories
-.terraform/
+**/.terraform/*
 
 # .tfstate files
 *.tfstate

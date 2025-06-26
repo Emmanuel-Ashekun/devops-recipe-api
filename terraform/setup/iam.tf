@@ -57,7 +57,6 @@ resource "aws_iam_user_policy_attachment" "tf_backend" {
 }
 
 
-# access key : AKIAUNNQUNMI6YGSAA24
 
 
 #########################
@@ -76,7 +75,6 @@ data "aws_iam_policy_document" "ecr" {
     actions = [
       "ecr:CompleteLayerUpload",
       "ecr:UploadLayerPart",
-      "ecr:DescribeRepositories",
       "ecr:InitiateLayerUpload",
       "ecr:BatchCheckLayerAvailability",
       "ecr:PutImage"
@@ -171,7 +169,6 @@ data "aws_iam_policy_document" "rds" {
     effect = "Allow"
     actions = [
       "rds:DescribeDBSubnetGroups",
-      "rds:AddTagsToResource",
       "rds:DescribeDBInstances",
       "rds:CreateDBSubnetGroup",
       "rds:DeleteDBSubnetGroup",

@@ -183,6 +183,17 @@ data "aws_iam_policy_document" "rds" {
     ]
     resources = ["*"]
   }
+  statement {
+    effect    = "Allow"
+    actions   = ["iam:CreateServiceLinkedRole"]
+    resources = ["*"]
+    condition {
+      test     = "StringEquals"
+      variable = "iam:AWSServiceName"
+      values   = ["rds.amazonaws.com"]
+    }
+  }
+
 }
 
 resource "aws_iam_policy" "rds" {

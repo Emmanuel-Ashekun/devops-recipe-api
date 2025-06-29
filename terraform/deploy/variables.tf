@@ -19,7 +19,7 @@ variable "db_username" {
   default     = "recipeapp"
 }
 
-variable "db_password" {
+variable "DB_PASSWORD" {
   description = "Password for the Terraform database"
   type        = string
 }
